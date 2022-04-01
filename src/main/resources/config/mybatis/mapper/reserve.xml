@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reserve">
+	<select id="res_room" parameterType="String" resultType="vo.RoomVO">
+		select * from store_room where room_id = #{res}
+	</select>
+	
+	<select id="res_user" parameterType="String" resultType="vo.UserVO">
+		select * from store_user where id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="vo.ReserveVO">
+		INSERT INTO STORE_RESERVATION VALUES(STORE_RESERVATION_SEQ.nextVal,
+									  #{user_num},
+									  #{room_id},
+									  #{start_date},
+									  #{end_date},
+									  #{res_cnt},
+									  #{status},
+									  #{acd_name},
+									  	sysdate
+									   )
+	</insert>
+	
+	<update id="update" parameterType="int">
+		UPDATE STORE_ROOM SET cnt = cnt + 1 WHERE room_id = #{room_id}
+	</update>
+	   	
+	
+	<select id="select_list" parameterType="int" resultType="vo.ReserveVO">
+		select * from store_reservation where user_num = #{user_num} order by res_date DESC
+	</select>
+	
+	
+	<select id="acd_list" parameterType="int" resultType="vo.AcdVO">
+		select * from store_accommodation  where acd_num in 
+		(select acd_num from store_room where room_id in 
+		(select room_id from store_reservation where user_num = #{user_num}))
+	</select>
+	
+	<select id="room_list" parameterType="int" resultType="vo.RoomVO">
+		select * from store_room where room_id = #{room_id}
+	</select>
+	
+	<select id="user_list" parameterType="int" resultType="vo.UserVO">
+		select * from store_user where user_num = #{user_num}
+	</select>
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="u">
+	<insert id="user_insert" parameterType="vo.UserVO">
+		insert into store_user values(store_user_seq.nextVal,
+									  #{id},
+									  #{pwd},
+									  #{name},
+									  #{jumin1},
+									  #{jumin2},
+									  #{tel1},
+									  #{tel2},
+									  #{tel3},
+									  #{email},
+									  #{postcode},
+									  #{address1},
+									  #{address2}
+									   )
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="user_login" resultType= "vo.UserVO" parameterType="String">
+		select * from store_user where id = #{id}
+	</select>
+	
+	<!-- 아이디찾기, 회원가입 유무 체크 -->  
+	<select id="user_search" resultType= "vo.UserVO" parameterType="String">
+		select * from store_user where name = #{name}
+	</select>
+	
+	<select id="user_mypage" resultType= "vo.UserVO" parameterType="int">
+		select * from store_user where user_num = #{user_num}
+	</select>
+	
+	<delete id="user_delete" parameterType="String">
+		delete from store_user where id = #{id}
+	</delete>
+	
+	<!-- 회원정보 수정 -->
+	<update id="user_update" parameterType="vo.UserVO">
+		update store_user set 
+						id = #{id},
+						pwd =#{pwd},
+						tel1 = #{tel1}, 
+						tel2 = #{tel2}, 
+						tel3 = #{tel3}, 
+						postcode = #{postcode},
+						address1 = #{address1},
+						address2 = #{address2},
+						email = #{email}
+		where user_num = #{user_num}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

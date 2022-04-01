@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room">
+	<insert id="room_insert" parameterType="vo.RoomVO">
+		insert into store_room values(store_room_seq.nextVal,
+									  #{room_type},
+									  #{room_price},
+									  #{acd_name},
+									  #{room_photo},
+									  #{acd_num},
+									  #{room_cnt},
+									  0)
+	</insert>
+	
+	<!-- 방 정보 -->
+	<select id="room_list" parameterType="String" resultType="vo.RoomVO">
+		select * from store_room where acd_name = #{acd_name} order by room_price ASC
+	</select>
+	
+	<!-- 펜션 정보 -->
+	<select id="pen_list" parameterType="String" resultType="vo.AcdVO">
+		select * from store_accommodation where acd_name = #{acd_name}
+	</select>
+	
+	<!-- 예약 정보 -->
+	<select id="res_list" parameterType="String" resultType="vo.ReserveVO">
+		select * from store_reservation where room_id IN 
+			(select room_id from store_room where acd_num = 
+				(select acd_num from store_accommodation where acd_name = #{acd_name}))
+	</select>
+	
+	<delete id="room_delete" parameterType="int">
+		delete from store_room where room_id = #{room_id}
+	</delete>
+	
+	<select id="room_select" resultType= "vo.RoomVO" parameterType="int">
+		select * from store_room where room_id = #{room_id}
+	</select>
+	
+	<update id="room_correct" parameterType="vo.RoomVO">
+		update store_room set 
+					room_type = #{room_type}, 
+					room_price = #{room_price}
+			where room_id = #{room_id}
+	</update>
+	
+	<select id="room_cnt"  parameterType="String" resultType="int">
+		SELECT SUM(cnt * room_price) FROM store_room where acd_num = 
+			(select acd_num from store_accommodation where acd_name = #{acd_name})
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

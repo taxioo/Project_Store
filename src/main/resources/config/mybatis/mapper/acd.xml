@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="acd">
+	<insert id="acd_insert" parameterType="vo.AcdVO">
+		insert into store_accommodation values(
+												store_accommodation_seq.nextVal,
+												#{acd_name},
+												#{acd_addr},
+												#{acd_type},
+												#{ceo_id},
+												#{acd_photo}
+		)
+	</insert>
+	
+	<select id="acd_search" resultType= "vo.AcdVO" parameterType="String">
+		select * from store_accommodation where acd_name = #{name}
+	</select>
+	
+	<select id="acd_list" parameterType="String" resultType="vo.AcdVO">
+		select * from store_accommodation where acd_type = #{acd_type}
+	</select>
+	
+	<select id="room_list" parameterType="String" resultType="vo.RoomVO">
+		select * from store_room where acd_name = #{acd_name}
+	</select>
+	
+	<select id="rm_list" parameterType="String" resultType="vo.AcdVO">
+		select * from store_accommodation where acd_name = #{acd_name}
+	</select>
+	
+	<select id="addr_list" parameterType="String" resultType="vo.AcdVO">
+		select * from store_accommodation where acd_addr LIKE '%' || #{acd_addr} || '%'
+	</select>
+	
+	<select id="text_list" parameterType="String" resultType="vo.AcdVO">
+		select * from store_accommodation where acd_name LIKE '%' || #{text} || '%' or acd_addr LIKE '%' || #{text} || '%'
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
