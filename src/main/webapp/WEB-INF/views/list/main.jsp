@@ -50,7 +50,7 @@
 							<!-- 숙박이미지  -->
 							<tr >
 								<td class="text-center" rowspan="2" style="width:28%;">
-								<img src="${pageContext.request.contextPath}/resources/upload/${acd.ceo_id}/${acd.acd_name}/${acd.acd_photo}"></td>
+								<img src="${pageContext.request.contextPath}/resources/upload/${acd.acd_name}/${acd.acd_photo}"></td>
 								<td style="width:40%;"><h3>${acd.acd_name}</h3></td>
 								<td>${acd.acd_type}</td>
 							</tr>

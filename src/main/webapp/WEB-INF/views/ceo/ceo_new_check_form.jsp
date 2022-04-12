@@ -99,7 +99,7 @@ function result(){
 	<%@include file="../include/ceo_header.jsp" %>
 	<div class="row" id="login_row">
 	  <div class="col-md-12 text-center align-self-center" id="login_body">
-	<form action="index.html" method="post" class="loginForm">
+		<form action="index.html" method="post" class="loginForm">
 		  <h1>회원가입</h1>
 		  <h5>회원가입전 아이디 중복검사를 실행합니다.</h5>
 	      <div class="idForm">
@@ -112,7 +112,7 @@ function result(){
 		  <button type="button" class="btn" onclick="send(this.form);">
 		    	회원가입
 		  </button>
-	</form>
+		</form>
 	  </div>
 	</div>
 </div>

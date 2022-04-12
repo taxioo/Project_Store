@@ -24,15 +24,15 @@
 				<div id="slideWrap" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 					    <div class="carousel-item active">
-				      	<img src="${pageContext.request.contextPath}/resources/img/banner/banner1.png" alt="" width="1100" height="500">
+				      	<img src="${pageContext.request.contextPath}/resources/img/banner/banner1.png" alt="" width="1100" height="400">
 					    </div>
 					    
 					    <div class="carousel-item">
-				      	<img src="${pageContext.request.contextPath}/resources/img/banner/banner2.png" alt="" width="1100" height="500">
+				      	<img src="${pageContext.request.contextPath}/resources/img/banner/banner2.png" alt="" width="1100" height="400">
 					    </div>
 					    
 					    <div class="carousel-item">
-				      	<img src="${pageContext.request.contextPath}/resources/img/banner/banner3.jpg" alt="" width="1100" height="500">
+				      	<img src="${pageContext.request.contextPath}/resources/img/banner/banner3.jpg" alt="" width="1100" height="400">
 					    </div>
 					    
 					    <%-- <div class="carousel-item">

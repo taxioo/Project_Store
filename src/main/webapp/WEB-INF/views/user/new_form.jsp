@@ -268,12 +268,14 @@
 			<div class="row">
 				<div class="col-md-3 mb-3"> 
 				<h6>우편번호</h6>
-						<input type="text" class="form-control" name="postcode" id="postcode" value="" readonly="readonly" required> 
+						<input type="text" class="form-control" name="postcode" id="postcode" value="" 
+						readonly="readonly" required> 
 				</div> 
 			
 					
 				<div class="col-md-12 mb-3"> 
-					<input type="text" class="form-control" id="address1" name="address1" value="" readonly="readonly" required> 
+					<input type="text" class="form-control" id="address1" name="address1" value="" 
+					readonly="readonly" required> 
 				</div> 
 				
 				<div class="col-md-12 mb-1"> 
